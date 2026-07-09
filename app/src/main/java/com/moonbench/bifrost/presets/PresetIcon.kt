@@ -44,8 +44,7 @@ enum class PresetIcon(
                 LedAnimationType.AMBILIGHT,
                 LedAnimationType.AMBIAURORA -> DISPLAY
 
-                LedAnimationType.BATTERY_INDICATOR,
-                LedAnimationType.CPU_TEMPERATURE -> TIMER
+                LedAnimationType.BATTERY_INDICATOR -> TIMER
             }
         }
     }

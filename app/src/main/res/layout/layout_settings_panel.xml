@@ -197,7 +197,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="AUTO-ENABLE HEIMDALL"
+                                android:text="AUTO-START ON BOOT"
                                 android:textColor="@color/bifrost_text"
                                 android:textSize="12sp"
                                 android:letterSpacing="0.05"
@@ -284,7 +284,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Keep Bifrost notification pinned while Heimdall is active"
+                                android:text="Keep Bifrost notification pinned while running"
                                 android:textColor="@color/bifrost_text_secondary"
                                 android:textSize="11sp"
                                 android:layout_marginTop="2dp" />
@@ -783,7 +783,7 @@
 
                             <TextView
                                 android:id="@+id/customSamplingLabel"
-                                android:text="CUSTOM SAMPLING"
+                                android:text="IGNORE BLACK BARS"
                                 android:textColor="@color/bifrost_text_secondary"
                                 android:textSize="10sp"
                                 android:letterSpacing="0.1"
@@ -1142,7 +1142,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PERFORMANCE PROFILE"
+                        android:text="UPDATE SPEED"
                         android:textColor="@color/bifrost_text"
                         android:textSize="12sp"
                         android:letterSpacing="0.08"

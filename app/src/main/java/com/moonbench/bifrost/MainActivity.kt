@@ -121,8 +121,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeContainer: View
     private lateinit var homeSettingsButton: MaterialButton
     private lateinit var primaryToggleButton: MaterialButton
-    private lateinit var guideButton: MaterialButton
-    private lateinit var feedbackButton: MaterialButton
     private lateinit var closeSettingsButton: MaterialButton
     private lateinit var presetCoverFlowScroll: LockableHorizontalScrollView
     private lateinit var presetCoverFlowContainer: LinearLayout
@@ -409,8 +407,6 @@ class MainActivity : AppCompatActivity() {
         homeContainer = findViewById(R.id.homeContainer)
         homeSettingsButton = findViewById(R.id.homeSettingsButton)
         primaryToggleButton = findViewById(R.id.primaryToggleButton)
-        guideButton = findViewById(R.id.guideButton)
-        feedbackButton = findViewById(R.id.feedbackButton)
         closeSettingsButton = findViewById(R.id.closeSettingsButton)
         presetCoverFlowScroll = findViewById(R.id.presetCoverFlowScroll)
         presetCoverFlowContainer = findViewById(R.id.presetCoverFlowContainer)
@@ -529,22 +525,6 @@ class MainActivity : AppCompatActivity() {
             serviceToggle.isChecked = !serviceToggle.isChecked
         }
         updatePrimaryToggleButtonAppearance(serviceToggle.isChecked)
-
-        guideButton.setOnClickListener {
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Pollux-MoonBench/Bifrost")))
-            } catch (e: Exception) {
-                Toast.makeText(this, "Couldn't open guide link", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        feedbackButton.setOnClickListener {
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Pollux-MoonBench/Bifrost/issues")))
-            } catch (e: Exception) {
-                Toast.makeText(this, "Couldn't open feedback link", Toast.LENGTH_SHORT).show()
-            }
-        }
 
         maybeAutoStartHeimdallOnLaunch()
 
@@ -775,9 +755,9 @@ class MainActivity : AppCompatActivity() {
                         val selectedPreset = presets[index]
                         activePresetNameText.text = selectedPreset.name
                         activePresetAnimationText.text =
-                            formatCardAnimationLabel(selectedPreset.animationType.name)
+                            formatCardAnimationLabel(selectedPreset.animationType)
                         activePresetProfileText.text =
-                            formatCardProfileLabel(selectedPreset.performanceProfile.name)
+                            formatCardProfileLabel(selectedPreset.performanceProfile)
                     }
                 }
 
@@ -1043,8 +1023,8 @@ class MainActivity : AppCompatActivity() {
 
         val selectedPreset = presets[selectedCoverFlowIndex]
         activePresetNameText.text = selectedPreset.name
-        activePresetAnimationText.text = formatCardAnimationLabel(selectedPreset.animationType.name)
-        activePresetProfileText.text = formatCardProfileLabel(selectedPreset.performanceProfile.name)
+        activePresetAnimationText.text = formatCardAnimationLabel(selectedPreset.animationType)
+        activePresetProfileText.text = formatCardProfileLabel(selectedPreset.performanceProfile)
 
         presetCoverFlowScroll.post {
             val sidePadding = ((presetCoverFlowScroll.width - tileSizePx) / 2).coerceAtLeast(dpToPx(12))
@@ -1151,8 +1131,8 @@ class MainActivity : AppCompatActivity() {
          val selectedPreset = presets[selectedIndex]
  
          activePresetNameText.text = selectedPreset.name
-         activePresetAnimationText.text = formatCardAnimationLabel(selectedPreset.animationType.name)
-         activePresetProfileText.text = formatCardProfileLabel(selectedPreset.performanceProfile.name)
+         activePresetAnimationText.text = formatCardAnimationLabel(selectedPreset.animationType)
+         activePresetProfileText.text = formatCardProfileLabel(selectedPreset.performanceProfile)
  
          centerPresetCard(selectedIndex, animate)
          updateCoverFlowCardTransforms()
@@ -1656,14 +1636,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun formatCardAnimationLabel(animationName: String): String {
-        val formatted = animationName.lowercase().replace('_', ' ').replaceFirstChar { it.uppercase() }
-        return "Animation: $formatted"
+    private fun formatCardAnimationLabel(animationType: LedAnimationType): String {
+        return "Mode: ${animationDisplayName(animationType)}"
     }
 
-    private fun formatCardProfileLabel(profileName: String): String {
-        val formatted = profileName.lowercase().replaceFirstChar { it.uppercase() }
-        return "Profile: $formatted"
+    private fun profileDisplayName(profile: PerformanceProfile): String {
+        return when (profile) {
+            PerformanceProfile.LOW -> "Battery Saver"
+            PerformanceProfile.MEDIUM -> "Balanced"
+            PerformanceProfile.HIGH -> "Smooth"
+            PerformanceProfile.RAGNAROK -> "Fastest (May Be Unstable)"
+        }
+    }
+
+    private fun formatCardProfileLabel(profile: PerformanceProfile): String {
+        return "Speed: ${profileDisplayName(profile)}"
     }
 
     private fun getSelectedPresetName(): String? {
@@ -1851,9 +1838,27 @@ class MainActivity : AppCompatActivity() {
             .start()
     }
 
+    private fun animationDisplayName(type: LedAnimationType): String {
+        return when (type) {
+            LedAnimationType.AMBILIGHT -> "Ambilight"
+            LedAnimationType.AUDIO_REACTIVE -> "Audio Reactive"
+            LedAnimationType.AMBIAURORA -> "Ambilight + Audio"
+            LedAnimationType.BATTERY_INDICATOR -> "Battery Indicator"
+            LedAnimationType.STATIC -> "Static Color"
+            LedAnimationType.BREATH -> "Breathing"
+            LedAnimationType.RAINBOW -> "Rainbow"
+            LedAnimationType.PULSE -> "Pulse"
+            LedAnimationType.STROBE -> "Strobe"
+            LedAnimationType.SPARKLE -> "Sparkle"
+            LedAnimationType.FADE_TRANSITION -> "Fade"
+            LedAnimationType.RAVE -> "Party Mode"
+            LedAnimationType.CHASE -> "Chase"
+        }
+    }
+
     private fun setupAnimationSpinner() {
         val types = LedAnimationType.values().toList()
-        val labels = types.map { it.name.lowercase().replaceFirstChar { c -> c.uppercase() } }
+        val labels = types.map { animationDisplayName(it) }
         val adapter = ArrayAdapter(this, R.layout.item_spinner_bifrost, labels)
         adapter.setDropDownViewResource(R.layout.item_spinner_dropdown_bifrost)
         animationSpinner.adapter = adapter
@@ -1892,7 +1897,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupProfileSpinner() {
         val profiles = PerformanceProfile.values().toList()
-        val labels = profiles.map { it.name.lowercase().replaceFirstChar { c -> c.uppercase() } }
+        val labels = profiles.map { profileDisplayName(it) }
         val adapter = ArrayAdapter(this, R.layout.item_spinner_bifrost, labels)
         adapter.setDropDownViewResource(R.layout.item_spinner_dropdown_bifrost)
         profileSpinner.adapter = adapter
@@ -2798,7 +2803,6 @@ class MainActivity : AppCompatActivity() {
             selectedBreatheWhenCharging
         val needsFlashWhenReady = selectedAnimationType == LedAnimationType.BATTERY_INDICATOR
         val needsBatteryPalette = selectedAnimationType == LedAnimationType.BATTERY_INDICATOR
-        val needsCpuPalette = selectedAnimationType == LedAnimationType.CPU_TEMPERATURE
 
         val supportsBrightness = true
 
@@ -2817,7 +2821,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         performanceCard.visibility = if (needsProfile) View.VISIBLE else View.GONE
-        animationCard.visibility = if (needsSpeed || needsSmoothness || needsSensitivity || needsSaturationBoost || needsCustomSampling || needsSingleColor || needsBreatheWhenCharging || needsChargingSpeedIndicator || needsFlashWhenReady || needsBatteryPalette || needsCpuPalette) View.VISIBLE else View.GONE
+        animationCard.visibility = if (needsSpeed || needsSmoothness || needsSensitivity || needsSaturationBoost || needsCustomSampling || needsSingleColor || needsBreatheWhenCharging || needsChargingSpeedIndicator || needsFlashWhenReady || needsBatteryPalette) View.VISIBLE else View.GONE
 
         if (animationCard.visibility == View.VISIBLE) {
             val speedLabel = findViewById<View>(R.id.speedLabel)
@@ -2858,7 +2862,7 @@ class MainActivity : AppCompatActivity() {
             chargingSpeedIndicatorRow?.visibility = if (needsChargingSpeedIndicator) View.VISIBLE else View.GONE
             flashWhenReadyRow?.visibility = if (needsFlashWhenReady) View.VISIBLE else View.GONE
             batteryPaletteRow?.visibility = if (needsBatteryPalette) View.VISIBLE else View.GONE
-            cpuPaletteRow?.visibility = if (needsCpuPalette) View.VISIBLE else View.GONE
+            cpuPaletteRow?.visibility = View.GONE
         }
     }
 

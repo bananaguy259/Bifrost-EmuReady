@@ -39,7 +39,6 @@ import com.moonbench.bifrost.animations.AudioReactiveAnimation
 import com.moonbench.bifrost.animations.BatteryIndicatorAnimation
 import com.moonbench.bifrost.animations.BreathAnimation
 import com.moonbench.bifrost.animations.ChaseAnimation
-import com.moonbench.bifrost.animations.CpuTemperatureAnimation
 import com.moonbench.bifrost.animations.FadeTransitionAnimation
 import com.moonbench.bifrost.animations.LedAnimation
 import com.moonbench.bifrost.animations.LedAnimationType
@@ -1093,12 +1092,6 @@ class LEDService : Service() {
                 currentBatteryLowColorOverride,
                 currentBatteryMidColorOverride,
                 currentBatteryHighColorOverride
-            )
-            LedAnimationType.CPU_TEMPERATURE -> CpuTemperatureAnimation(
-                ledController,
-                coolColorOverride = currentCpuCoolColorOverride,
-                warmColorOverride = currentCpuWarmColorOverride,
-                hotColorOverride = currentCpuHotColorOverride
             )
             LedAnimationType.STATIC -> StaticAnimation(ledController, color, rightColor)
             LedAnimationType.BREATH -> BreathAnimation(ledController, color, rightColor)
