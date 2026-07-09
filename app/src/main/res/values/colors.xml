@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bifrost_bg">#0D0D17</color>
+    <color name="bifrost_card">#181825</color>
+    <color name="bifrost_surface">#14141F</color>
+    <color name="bifrost_text">#FFFFFF</color>
+    <color name="bifrost_icon">#FFFFFF</color>
+    <color name="bifrost_text_secondary">#9D9DB0</color>
+    <color name="bifrost_dropdown_bg">#181825</color>
+    <color name="bifrost_dialog_background">#181825</color>
+
+    <color name="bifrost_glow_purple">#6366F1</color>
+    <color name="bifrost_glow_cyan">#EC4899</color>
+    <color name="bifrost_glow_pink">#EC4899</color>
+
+    <color name="bifrost_accent">#8B5CF6</color>
+    <color name="bifrost_accent_light">#EC4899</color>
+    <color name="bifrost_card_border">#2A2A3D</color>
+    <color name="bifrost_gradient_start">#6366F1</color>
+    <color name="bifrost_gradient_end">#EC4899</color>
+    <color name="bifrost_status_on">#22C55E</color>
+    <color name="bifrost_status_off">#EF4444</color>
+</resources>

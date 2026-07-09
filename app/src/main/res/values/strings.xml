@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Bifrost</string>
+    <string name="delete_preset_title">Delete preset</string>
+    <string name="delete_preset_subtitle">Delete "%1$s"?</string>
+    <string name="delete_preset_subtitle_placeholder">Delete this preset?</string>
+    <string name="delete_preset_body">This action cannot be undone. The preset will be removed permanently.</string>
+
+    <string name="action_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_save">Save</string>
+    <string name="action_dont_save">Do not save</string>
+    <string name="action_add">Add</string>
+    <string name="action_replace">Replace everything</string>
+
+    <!-- Delete all presets / confirmation -->
+    <string name="delete_all_presets_title">Delete all presets</string>
+    <string name="delete_all_presets_body">This will permanently delete every preset and cannot be undone.</string>
+    <string name="action_delete_all">Delete all</string>
+
+    <string name="ragnarok_warning_title">RAGNAROK MODE</string>
+    <string name="ragnarok_warning_subtitle">This mode disables all throttling and may cause system instability or freezes with screen capture animations.</string>
+    <string name="ragnarok_warning_body">RAGNAROK sends LED commands as fast as possible and can overwhelm your device. Use only if you understand the risks.</string>
+    <string name="ragnarok_warning_confirm">I understand</string>
+
+    <string name="beta_alert_title">BIFROST BETA WARNING</string>
+    <string name="beta_alert_subtitle">This app is currently in beta and may cause crashes or unstable behavior.</string>
+    <string name="beta_alert_body">This app is provided for free and you should not be charged for obtaining it. It is available for free on this GitHub repo: exemplegithubrepo</string>
+    <string name="alert_action_ok">OK</string>
+
+    <string name="bifrost_alert_title_placeholder">Title</string>
+    <string name="bifrost_alert_subtitle_placeholder">Subtitle</string>
+    <string name="bifrost_alert_body_placeholder">Body</string>
+    <string name="settings_gear_symbol">&#x2699;</string>
+    <string name="settings_close_confirm_title">Save changes?</string>
+    <string name="settings_close_confirm_subtitle">Do you want to save the current values to the selected preset before closing?</string>
+    <string name="app_profile_info_title">APP PROFILE MODE</string>
+    <string name="app_profile_info_subtitle">Animations now switch automatically based on the foreground app.</string>
+    <string name="app_profile_info_body">In this mode, swiping presets will not change the running animation. Assign apps to presets in settings to control what plays automatically.</string>
+
+</resources>
