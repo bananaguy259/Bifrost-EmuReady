@@ -15,13 +15,7 @@ enum class PresetIcon(
     COMPASS("Compass", drawableRes = R.drawable.ic_compass),
     DISPLAY("Display", drawableRes = R.drawable.ic_gallery),
     SYSTEM("System", drawableRes = R.drawable.ic_gear),
-    TIMER("Timer", drawableRes = R.drawable.ic_timer),
-    FIRE("Fire emoji", emoji = "\uD83D\uDD25"),
-    SPARKLES("Sparkles emoji", emoji = "\u2728"),
-    WAVE("Wave emoji", emoji = "\uD83C\uDF0A"),
-    BOLT("Lightning emoji", emoji = "\u26A1"),
-    MUSIC("Music emoji", emoji = "\uD83C\uDFB5"),
-    MOON("Moon emoji", emoji = "\uD83C\uDF19");
+    TIMER("Timer", drawableRes = R.drawable.ic_timer);
 
     companion object {
         fun fromStoredName(value: String?): PresetIcon {
