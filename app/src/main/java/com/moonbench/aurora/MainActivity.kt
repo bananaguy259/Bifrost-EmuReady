@@ -386,6 +386,20 @@ class MainActivity : AppCompatActivity() {
         super.onNewIntent(intent)
         setIntent(intent)
         handleAppProfileProjectionIntent(intent)
+        maybeAutoStartFromWidget(intent)
+    }
+
+    private fun maybeAutoStartFromWidget(intent: Intent?) {
+        if (intent?.getBooleanExtra(
+                com.moonbench.aurora.widget.AuroraWidgetProvider.EXTRA_AUTO_START_FROM_WIDGET,
+                false
+            ) != true
+        ) return
+        intent.removeExtra(com.moonbench.aurora.widget.AuroraWidgetProvider.EXTRA_AUTO_START_FROM_WIDGET)
+
+        if (LEDService.isRunning) return
+        if (!::serviceToggle.isInitialized) return
+        serviceToggle.isChecked = true
     }
 
     private fun handleAppProfileProjectionIntent(intent: Intent?) {
@@ -527,6 +541,7 @@ class MainActivity : AppCompatActivity() {
         updatePrimaryToggleButtonAppearance(serviceToggle.isChecked)
 
         maybeAutoStartHeimdallOnLaunch()
+        maybeAutoStartFromWidget(intent)
 
         isAppInitialized = true
 

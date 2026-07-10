@@ -226,6 +226,7 @@ class LEDService : Service() {
         }
 
         isRunning = true
+        com.moonbench.aurora.widget.AuroraWidgetProvider.updateAllWidgets(this)
 
         val animationTypeName = intent.getStringExtra("animationType")
         val animationType = animationTypeName?.let {
@@ -803,6 +804,7 @@ class LEDService : Service() {
             handler.removeCallbacks(activityCheckRunnable)
             clearPendingCallbacks()
             isRunning = false
+            com.moonbench.aurora.widget.AuroraWidgetProvider.updateAllWidgets(this)
             allowBackgroundRun = false
             isTransitioning.set(false)
             activeAnimationType = null
