@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bifrost</string>
+    <string name="app_name">Aurora</string>
     <string name="delete_preset_title">Delete preset</string>
     <string name="delete_preset_subtitle">Delete "%1$s"?</string>
     <string name="delete_preset_subtitle_placeholder">Delete this preset?</string>
@@ -22,14 +22,14 @@
     <string name="ragnarok_warning_body">RAGNAROK sends LED commands as fast as possible and can overwhelm your device. Use only if you understand the risks.</string>
     <string name="ragnarok_warning_confirm">I understand</string>
 
-    <string name="beta_alert_title">BIFROST BETA WARNING</string>
+    <string name="beta_alert_title">AURORA BETA WARNING</string>
     <string name="beta_alert_subtitle">This app is currently in beta and may cause crashes or unstable behavior.</string>
     <string name="beta_alert_body">This app is provided for free and you should not be charged for obtaining it. It is available for free on this GitHub repo: exemplegithubrepo</string>
     <string name="alert_action_ok">OK</string>
 
-    <string name="bifrost_alert_title_placeholder">Title</string>
-    <string name="bifrost_alert_subtitle_placeholder">Subtitle</string>
-    <string name="bifrost_alert_body_placeholder">Body</string>
+    <string name="aurora_alert_title_placeholder">Title</string>
+    <string name="aurora_alert_subtitle_placeholder">Subtitle</string>
+    <string name="aurora_alert_body_placeholder">Body</string>
     <string name="settings_gear_symbol">&#x2699;</string>
     <string name="settings_close_confirm_title">Save changes?</string>
     <string name="settings_close_confirm_subtitle">Do you want to save the current values to the selected preset before closing?</string>

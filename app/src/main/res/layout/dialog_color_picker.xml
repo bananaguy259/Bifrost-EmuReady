@@ -14,7 +14,7 @@
         android:textSize="14sp"
         android:letterSpacing="0.1"
         android:textStyle="bold"
-        android:textColor="@color/bifrost_text"
+        android:textColor="@color/aurora_text"
         android:layout_marginBottom="16dp" />
 
     <FrameLayout
@@ -41,8 +41,8 @@
             android:hint="#RRGGBB"
             android:maxLength="7"
             android:inputType="textCapCharacters"
-            android:textColor="@color/bifrost_text"
-            android:textColorHint="@color/bifrost_text_secondary"
+            android:textColor="@color/aurora_text"
+            android:textColorHint="@color/aurora_text_secondary"
             android:textSize="18sp"
             android:textStyle="bold"
             android:letterSpacing="0.05"
@@ -78,14 +78,14 @@
                 android:text="RED"
                 android:textSize="11sp"
                 android:letterSpacing="0.1"
-                android:textColor="@color/bifrost_text_secondary" />
+                android:textColor="@color/aurora_text_secondary" />
         </LinearLayout>
 
         <SeekBar
             android:id="@+id/seekRed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/BifrostSeekBarRGB" />
+            style="@style/AuroraSeekBarRGB" />
     </LinearLayout>
 
     <LinearLayout
@@ -114,14 +114,14 @@
                 android:text="GREEN"
                 android:textSize="11sp"
                 android:letterSpacing="0.1"
-                android:textColor="@color/bifrost_text_secondary" />
+                android:textColor="@color/aurora_text_secondary" />
         </LinearLayout>
 
         <SeekBar
             android:id="@+id/seekGreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/BifrostSeekBarRGB" />
+            style="@style/AuroraSeekBarRGB" />
     </LinearLayout>
 
     <LinearLayout
@@ -149,14 +149,14 @@
                 android:text="BLUE"
                 android:textSize="11sp"
                 android:letterSpacing="0.1"
-                android:textColor="@color/bifrost_text_secondary" />
+                android:textColor="@color/aurora_text_secondary" />
         </LinearLayout>
 
         <SeekBar
             android:id="@+id/seekBlue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/BifrostSeekBarRGB" />
+            style="@style/AuroraSeekBarRGB" />
     </LinearLayout>
 
 </LinearLayout>

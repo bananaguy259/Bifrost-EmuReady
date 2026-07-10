@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bifrost_dropdown_bg"
+    android:background="@color/aurora_dropdown_bg"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="12dp">
@@ -14,7 +14,7 @@
         android:layout_marginEnd="10dp"
         android:gravity="center"
         android:importantForAccessibility="no"
-        android:textColor="@color/bifrost_text"
+        android:textColor="@color/aurora_text"
         android:textSize="16sp"
         android:visibility="gone" />
 
@@ -33,6 +33,6 @@
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"
-        android:textColor="@color/bifrost_text"
+        android:textColor="@color/aurora_text"
         android:textSize="14sp" />
 </LinearLayout>

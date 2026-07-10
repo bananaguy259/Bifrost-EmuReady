@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/bifrost_screen_padding"
-    android:background="@color/bifrost_bg">
+    android:padding="@dimen/aurora_screen_padding"
+    android:background="@color/aurora_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:background="@drawable/bifrost_spinner_modern"
+                android:background="@drawable/aurora_spinner_modern"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
@@ -37,11 +37,11 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="24dp"
-                app:iconTint="@color/bifrost_icon"
-                android:backgroundTint="@color/bifrost_surface"
+                app:iconTint="@color/aurora_icon"
+                android:backgroundTint="@color/aurora_surface"
                 app:cornerRadius="10dp"
                 app:strokeWidth="1dp"
-                app:strokeColor="@color/bifrost_accent" />
+                app:strokeColor="@color/aurora_accent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/modifyPresetButton"
@@ -55,11 +55,11 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="24dp"
-                app:iconTint="@color/bifrost_icon"
-                android:backgroundTint="@color/bifrost_surface"
+                app:iconTint="@color/aurora_icon"
+                android:backgroundTint="@color/aurora_surface"
                 app:cornerRadius="10dp"
                 app:strokeWidth="1dp"
-                app:strokeColor="@color/bifrost_accent" />
+                app:strokeColor="@color/aurora_accent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/deletePresetButton"
@@ -73,11 +73,11 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="24dp"
-                app:iconTint="@color/bifrost_icon"
-                android:backgroundTint="@color/bifrost_surface"
+                app:iconTint="@color/aurora_icon"
+                android:backgroundTint="@color/aurora_surface"
                 app:cornerRadius="10dp"
                 app:strokeWidth="1dp"
-                app:strokeColor="@color/bifrost_accent" />
+                app:strokeColor="@color/aurora_accent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/customizePresetArtworkButton"
@@ -91,25 +91,25 @@
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="24dp"
-                app:iconTint="@color/bifrost_icon"
-                android:backgroundTint="@color/bifrost_surface"
+                app:iconTint="@color/aurora_icon"
+                android:backgroundTint="@color/aurora_surface"
                 app:cornerRadius="10dp"
                 app:strokeWidth="1dp"
-                app:strokeColor="@color/bifrost_accent" />
+                app:strokeColor="@color/aurora_accent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/closeSettingsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="@color/bifrost_surface"
+                android:backgroundTint="@color/aurora_surface"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="DONE"
-                android:textColor="@color/bifrost_text"
+                android:textColor="@color/aurora_text"
                 android:textSize="11sp"
                 app:cornerRadius="10dp"
-                app:strokeColor="@color/bifrost_accent"
+                app:strokeColor="@color/aurora_accent"
                 app:strokeWidth="1dp" />
     </LinearLayout>
 
@@ -128,11 +128,11 @@
             android:text="EXPORT"
             android:textSize="11sp"
             android:letterSpacing="0.05"
-            android:textColor="@color/bifrost_text"
-            android:backgroundTint="@color/bifrost_surface"
+            android:textColor="@color/aurora_text"
+            android:backgroundTint="@color/aurora_surface"
             app:cornerRadius="10dp"
             app:strokeWidth="1dp"
-            app:strokeColor="@color/bifrost_accent" />
+            app:strokeColor="@color/aurora_accent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/importPresetsButton"
@@ -143,11 +143,11 @@
             android:text="IMPORT"
             android:textSize="11sp"
             android:letterSpacing="0.05"
-            android:textColor="@color/bifrost_text"
-            android:backgroundTint="@color/bifrost_surface"
+            android:textColor="@color/aurora_text"
+            android:backgroundTint="@color/aurora_surface"
             app:cornerRadius="10dp"
             app:strokeWidth="1dp"
-            app:strokeColor="@color/bifrost_accent" />
+            app:strokeColor="@color/aurora_accent" />
     </LinearLayout>
 
     <ScrollView
@@ -166,19 +166,19 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                app:cardBackgroundColor="@color/bifrost_card"
+                android:layout_marginBottom="@dimen/aurora_spacing_md"
+                app:cardBackgroundColor="@color/aurora_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                android:outlineAmbientShadowColor="@color/bifrost_glow_purple"
-                android:outlineSpotShadowColor="@color/bifrost_glow_purple">
+                android:outlineAmbientShadowColor="@color/aurora_glow_blue"
+                android:outlineSpotShadowColor="@color/aurora_glow_blue">
 
                 <LinearLayout
                     android:id="@+id/settingsSystemStatusContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="@dimen/bifrost_card_padding"
+                    android:padding="@dimen/aurora_card_padding"
                     android:background="@drawable/card_glow_bg">
 
                     <LinearLayout
@@ -198,7 +198,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="AUTO-START ON BOOT"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="12sp"
                                 android:letterSpacing="0.05"
                                 android:textStyle="bold" />
@@ -207,7 +207,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Start silently at app launch and device startup"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="11sp"
                                 android:layout_marginTop="2dp" />
                         </LinearLayout>
@@ -237,7 +237,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="BATTERY MODE WHEN PLUGGED"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="12sp"
                                 android:letterSpacing="0.05"
                                 android:textStyle="bold" />
@@ -246,7 +246,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Temporarily override the active preset with Battery Indicator while charging"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="11sp"
                                 android:layout_marginTop="2dp" />
                         </LinearLayout>
@@ -276,7 +276,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="PERSISTENT NOTIFICATION"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="12sp"
                                 android:letterSpacing="0.05"
                                 android:textStyle="bold" />
@@ -284,8 +284,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Keep Bifrost notification pinned while running"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:text="Keep Aurora notification pinned while running"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="11sp"
                                 android:layout_marginTop="2dp" />
                         </LinearLayout>
@@ -306,37 +306,37 @@
                 android:id="@+id/thorSettingsCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bifrost_spacing_md"
+                android:layout_marginBottom="@dimen/aurora_spacing_md"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/bifrost_card"
+                app:cardBackgroundColor="@color/aurora_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                android:outlineAmbientShadowColor="@color/bifrost_glow_cyan"
-                android:outlineSpotShadowColor="@color/bifrost_glow_cyan">
+                android:outlineAmbientShadowColor="@color/aurora_glow_teal"
+                android:outlineSpotShadowColor="@color/aurora_glow_teal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="@dimen/bifrost_card_padding"
+                    android:padding="@dimen/aurora_card_padding"
                     android:background="@drawable/card_glow_bg">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="AYN THOR"
-                        android:textColor="@color/bifrost_text"
+                        android:textColor="@color/aurora_text"
                         android:textSize="12sp"
                         android:letterSpacing="0.08"
                         android:textStyle="bold"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md" />
+                        android:layout_marginBottom="@dimen/aurora_spacing_md" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md">
+                        android:layout_marginBottom="@dimen/aurora_spacing_md">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -348,7 +348,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="LAUNCH ON BOTTOM SCREEN"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="12sp"
                                 android:letterSpacing="0.05"
                                 android:textStyle="bold" />
@@ -356,8 +356,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Open Bifrost on bottom screen by default"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:text="Open Aurora on bottom screen by default"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="11sp"
                                 android:layout_marginTop="2dp" />
                         </LinearLayout>
@@ -386,7 +386,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="AMBILIGHT SOURCE SCREEN"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="12sp"
                                 android:letterSpacing="0.05"
                                 android:textStyle="bold" />
@@ -395,7 +395,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Capture bottom screen for LED sync"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="11sp"
                                 android:layout_marginTop="2dp" />
                         </LinearLayout>
@@ -415,25 +415,25 @@
                 android:id="@+id/modeCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                app:cardBackgroundColor="@color/bifrost_card"
+                android:layout_marginBottom="@dimen/aurora_spacing_md"
+                app:cardBackgroundColor="@color/aurora_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                android:outlineAmbientShadowColor="@color/bifrost_glow_cyan"
-                android:outlineSpotShadowColor="@color/bifrost_glow_cyan">
+                android:outlineAmbientShadowColor="@color/aurora_glow_teal"
+                android:outlineSpotShadowColor="@color/aurora_glow_teal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="@dimen/bifrost_card_padding"
+                    android:padding="@dimen/aurora_card_padding"
                     android:background="@drawable/card_glow_bg">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ANIMATION MODE"
-                        android:textColor="@color/bifrost_text"
+                        android:textColor="@color/aurora_text"
                         android:textSize="12sp"
                         android:letterSpacing="0.08"
                         android:textStyle="bold"
@@ -443,7 +443,7 @@
                         android:id="@+id/animationSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bifrost_spinner_modern"
+                        android:background="@drawable/aurora_spinner_modern"
                         android:layout_marginBottom="4dp"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
@@ -456,18 +456,18 @@
                 android:id="@+id/appProfileCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                app:cardBackgroundColor="@color/bifrost_card"
+                android:layout_marginBottom="@dimen/aurora_spacing_md"
+                app:cardBackgroundColor="@color/aurora_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                android:outlineAmbientShadowColor="@color/bifrost_glow_cyan"
-                android:outlineSpotShadowColor="@color/bifrost_glow_cyan">
+                android:outlineAmbientShadowColor="@color/aurora_glow_teal"
+                android:outlineSpotShadowColor="@color/aurora_glow_teal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="@dimen/bifrost_card_padding"
+                    android:padding="@dimen/aurora_card_padding"
                     android:background="@drawable/card_glow_bg">
 
                     <LinearLayout
@@ -487,7 +487,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="APP PROFILES"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="12sp"
                                 android:letterSpacing="0.08"
                                 android:textStyle="bold" />
@@ -496,7 +496,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Auto-switch by foreground app"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="8sp"
                                 android:layout_marginTop="2dp" />
                         </LinearLayout>
@@ -522,11 +522,11 @@
                             android:text="ASSIGN"
                             android:textSize="10sp"
                             android:letterSpacing="0.05"
-                            android:backgroundTint="@color/bifrost_surface"
-                            android:textColor="@color/bifrost_text"
+                            android:backgroundTint="@color/aurora_surface"
+                            android:textColor="@color/aurora_text"
                             app:cornerRadius="10dp"
                             app:strokeWidth="1dp"
-                            app:strokeColor="@color/bifrost_accent"
+                            app:strokeColor="@color/aurora_accent"
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:layout_marginEnd="4dp" />
@@ -539,11 +539,11 @@
                             android:text="MANAGE"
                             android:textSize="10sp"
                             android:letterSpacing="0.05"
-                            android:backgroundTint="@color/bifrost_surface"
-                            android:textColor="@color/bifrost_text"
+                            android:backgroundTint="@color/aurora_surface"
+                            android:textColor="@color/aurora_text"
                             app:cornerRadius="10dp"
                             app:strokeWidth="1dp"
-                            app:strokeColor="@color/bifrost_accent"
+                            app:strokeColor="@color/aurora_accent"
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:layout_marginStart="4dp" />
@@ -566,7 +566,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="DEFAULT FALLBACK"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="10sp"
                                 android:letterSpacing="0.1" />
 
@@ -575,7 +575,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
                                 android:text="Use selected preset when no assigned app is foreground"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="8sp" />
                         </LinearLayout>
 
@@ -593,16 +593,16 @@
                 android:id="@+id/colorCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                app:cardBackgroundColor="@color/bifrost_card"
+                android:layout_marginBottom="@dimen/aurora_spacing_md"
+                app:cardBackgroundColor="@color/aurora_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                android:outlineAmbientShadowColor="@color/bifrost_glow_pink"
-                android:outlineSpotShadowColor="@color/bifrost_glow_pink">
+                android:outlineAmbientShadowColor="@color/aurora_glow_green"
+                android:outlineSpotShadowColor="@color/aurora_glow_green">
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:padding="@dimen/bifrost_card_padding"
+                    android:padding="@dimen/aurora_card_padding"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/card_glow_bg">
@@ -610,13 +610,13 @@
                     <TextView
                         android:id="@+id/colorCardTitle"
                         android:text="COLOR &amp; INTENSITY"
-                        android:textColor="@color/bifrost_text"
+                        android:textColor="@color/aurora_text"
                         android:textSize="12sp"
                         android:letterSpacing="0.08"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md" />
+                        android:layout_marginBottom="@dimen/aurora_spacing_md" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -630,13 +630,13 @@
                             android:layout_height="48dp"
                             android:layout_weight="1"
                             android:text="LEFT"
-                            android:backgroundTint="@color/bifrost_surface"
-                            android:textColor="@color/bifrost_text"
+                            android:backgroundTint="@color/aurora_surface"
+                            android:textColor="@color/aurora_text"
                             android:textSize="12sp"
                             android:letterSpacing="0.05"
                             app:cornerRadius="12dp"
                             app:strokeWidth="1dp"
-                            app:strokeColor="@color/bifrost_accent"
+                            app:strokeColor="@color/aurora_accent"
                             android:layout_marginEnd="4dp" />
 
                         <com.google.android.material.button.MaterialButton
@@ -645,19 +645,19 @@
                             android:layout_height="48dp"
                             android:layout_weight="1"
                             android:text="RIGHT"
-                            android:backgroundTint="@color/bifrost_surface"
-                            android:textColor="@color/bifrost_text"
+                            android:backgroundTint="@color/aurora_surface"
+                            android:textColor="@color/aurora_text"
                             android:textSize="12sp"
                             android:letterSpacing="0.05"
                             app:cornerRadius="12dp"
                             app:strokeWidth="1dp"
-                            app:strokeColor="@color/bifrost_accent"
+                            app:strokeColor="@color/aurora_accent"
                             android:layout_marginStart="4dp" />
                     </LinearLayout>
 
                     <TextView
                         android:text="BRIGHTNESS"
-                        android:textColor="@color/bifrost_text_secondary"
+                        android:textColor="@color/aurora_text_secondary"
                         android:textSize="10sp"
                         android:letterSpacing="0.1"
                         android:layout_marginBottom="8dp"
@@ -668,7 +668,7 @@
                         android:id="@+id/brightnessSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/BifrostSeekBar" />
+                        style="@style/AuroraSeekBar" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -676,15 +676,15 @@
                 android:id="@+id/animationCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                app:cardBackgroundColor="@color/bifrost_card"
+                android:layout_marginBottom="@dimen/aurora_spacing_md"
+                app:cardBackgroundColor="@color/aurora_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                android:outlineAmbientShadowColor="@color/bifrost_glow_cyan"
-                android:outlineSpotShadowColor="@color/bifrost_glow_cyan">
+                android:outlineAmbientShadowColor="@color/aurora_glow_teal"
+                android:outlineSpotShadowColor="@color/aurora_glow_teal">
 
                 <LinearLayout
-                    android:padding="@dimen/bifrost_card_padding"
+                    android:padding="@dimen/aurora_card_padding"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -692,18 +692,18 @@
 
                     <TextView
                         android:text="ANIMATION PARAMETERS"
-                        android:textColor="@color/bifrost_text"
+                        android:textColor="@color/aurora_text"
                         android:textSize="12sp"
                         android:letterSpacing="0.08"
                         android:textStyle="bold"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md"
+                        android:layout_marginBottom="@dimen/aurora_spacing_md"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/speedLabel"
                         android:text="REACTIVITY"
-                        android:textColor="@color/bifrost_text_secondary"
+                        android:textColor="@color/aurora_text_secondary"
                         android:textSize="10sp"
                         android:letterSpacing="0.1"
                         android:layout_marginBottom="8dp"
@@ -714,13 +714,13 @@
                         android:id="@+id/speedSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                        style="@style/BifrostSeekBar" />
+                        android:layout_marginBottom="@dimen/aurora_spacing_md"
+                        style="@style/AuroraSeekBar" />
 
                     <TextView
                         android:id="@+id/smoothnessLabel"
                         android:text="SMOOTHNESS"
-                        android:textColor="@color/bifrost_text_secondary"
+                        android:textColor="@color/aurora_text_secondary"
                         android:textSize="10sp"
                         android:letterSpacing="0.1"
                         android:layout_marginBottom="8dp"
@@ -731,13 +731,13 @@
                         android:id="@+id/smoothnessSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                        style="@style/BifrostSeekBar" />
+                        android:layout_marginBottom="@dimen/aurora_spacing_md"
+                        style="@style/AuroraSeekBar" />
 
                     <TextView
                         android:id="@+id/sensitivityLabel"
                         android:text="AUDIO SENSITIVITY"
-                        android:textColor="@color/bifrost_text_secondary"
+                        android:textColor="@color/aurora_text_secondary"
                         android:textSize="10sp"
                         android:letterSpacing="0.1"
                         android:layout_marginBottom="8dp"
@@ -748,13 +748,13 @@
                         android:id="@+id/sensitivitySeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                        style="@style/BifrostSeekBar" />
+                        android:layout_marginBottom="@dimen/aurora_spacing_md"
+                        style="@style/AuroraSeekBar" />
 
                     <TextView
                         android:id="@+id/saturationBoostLabel"
                         android:text="SATURATION BOOST"
-                        android:textColor="@color/bifrost_text_secondary"
+                        android:textColor="@color/aurora_text_secondary"
                         android:textSize="10sp"
                         android:letterSpacing="0.1"
                         android:layout_marginBottom="8dp"
@@ -765,15 +765,15 @@
                         android:id="@+id/saturationBoostSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                        style="@style/BifrostSeekBar" />
+                        android:layout_marginBottom="@dimen/aurora_spacing_md"
+                        style="@style/AuroraSeekBar" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="@dimen/bifrost_spacing_md">
+                        android:layout_marginBottom="@dimen/aurora_spacing_md">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -784,7 +784,7 @@
                             <TextView
                                 android:id="@+id/customSamplingLabel"
                                 android:text="IGNORE BLACK BARS"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="10sp"
                                 android:letterSpacing="0.1"
                                 android:layout_width="wrap_content"
@@ -793,7 +793,7 @@
                             <TextView
                                 android:id="@+id/ignoreletterbox"
                                 android:text="Ignores letterbox and pillarbox"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="8sp"
                                 android:layout_marginTop="2dp"
                                 android:layout_width="wrap_content"
@@ -823,7 +823,7 @@
                             <TextView
                                 android:id="@+id/singleColorLabel"
                                 android:text="SINGLE COLOR MODE"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="10sp"
                                 android:letterSpacing="0.1"
                                 android:layout_width="wrap_content"
@@ -832,7 +832,7 @@
                             <TextView
                                 android:id="@+id/bothSticksSameColor"
                                 android:text="Both sticks use same color"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="8sp"
                                 android:layout_marginTop="2dp"
                                 android:layout_width="wrap_content"
@@ -851,7 +851,7 @@
                         android:id="@+id/breatheWhenChargingRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/bifrost_spacing_md"
+                        android:layout_marginTop="@dimen/aurora_spacing_md"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
 
@@ -864,7 +864,7 @@
                             <TextView
                                 android:id="@+id/breatheWhenChargingLabel"
                                 android:text="BREATHE WHEN CHARGING"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="10sp"
                                 android:letterSpacing="0.1"
                                 android:layout_width="wrap_content"
@@ -873,7 +873,7 @@
                             <TextView
                                 android:id="@+id/breatheWhenChargingHint"
                                 android:text="Pulse the battery color while power is connected"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="8sp"
                                 android:layout_marginTop="2dp"
                                 android:layout_width="wrap_content"
@@ -892,7 +892,7 @@
                         android:id="@+id/chargingSpeedIndicatorRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/bifrost_spacing_md"
+                        android:layout_marginTop="@dimen/aurora_spacing_md"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
 
@@ -905,7 +905,7 @@
                             <TextView
                                 android:id="@+id/chargingSpeedIndicatorLabel"
                                 android:text="MATCH BREATH TO CHARGE SPEED"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="10sp"
                                 android:letterSpacing="0.1"
                                 android:layout_width="wrap_content"
@@ -914,7 +914,7 @@
                             <TextView
                                 android:id="@+id/chargingSpeedIndicatorHint"
                                 android:text="Faster charging increases pulse speed when data is available"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="8sp"
                                 android:layout_marginTop="2dp"
                                 android:layout_width="wrap_content"
@@ -933,7 +933,7 @@
                         android:id="@+id/flashWhenReadyRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/bifrost_spacing_md"
+                        android:layout_marginTop="@dimen/aurora_spacing_md"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
 
@@ -946,7 +946,7 @@
                             <TextView
                                 android:id="@+id/flashWhenReadyLabel"
                                 android:text="COOL BREATHE WHEN READY"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="10sp"
                                 android:letterSpacing="0.1"
                                 android:layout_width="wrap_content"
@@ -955,7 +955,7 @@
                             <TextView
                                 android:id="@+id/flashWhenReadyHint"
                                 android:text="At full charge, use a cool blue-green with a gentle breathe"
-                                android:textColor="@color/bifrost_text_secondary"
+                                android:textColor="@color/aurora_text_secondary"
                                 android:textSize="8sp"
                                 android:layout_marginTop="2dp"
                                 android:layout_width="wrap_content"
@@ -974,14 +974,14 @@
                         android:id="@+id/batteryPaletteRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/bifrost_spacing_md"
+                        android:layout_marginTop="@dimen/aurora_spacing_md"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="BATTERY COLORS"
-                            android:textColor="@color/bifrost_text_secondary"
+                            android:textColor="@color/aurora_text_secondary"
                             android:textSize="10sp"
                             android:letterSpacing="0.1" />
 
@@ -990,7 +990,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Long press any swatch to reset its default"
-                            android:textColor="@color/bifrost_text_secondary"
+                            android:textColor="@color/aurora_text_secondary"
                             android:textSize="8sp" />
 
                         <LinearLayout
@@ -1005,12 +1005,12 @@
                                 android:layout_height="44dp"
                                 android:layout_weight="1"
                                 android:text="LOW"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="10sp"
-                                android:backgroundTint="@color/bifrost_surface"
+                                android:backgroundTint="@color/aurora_surface"
                                 app:cornerRadius="10dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="@color/bifrost_accent"
+                                app:strokeColor="@color/aurora_accent"
                                 android:layout_marginEnd="4dp" />
 
                             <com.google.android.material.button.MaterialButton
@@ -1019,12 +1019,12 @@
                                 android:layout_height="44dp"
                                 android:layout_weight="1"
                                 android:text="MID"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="10sp"
-                                android:backgroundTint="@color/bifrost_surface"
+                                android:backgroundTint="@color/aurora_surface"
                                 app:cornerRadius="10dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="@color/bifrost_accent"
+                                app:strokeColor="@color/aurora_accent"
                                 android:layout_marginStart="2dp"
                                 android:layout_marginEnd="2dp" />
 
@@ -1034,12 +1034,12 @@
                                 android:layout_height="44dp"
                                 android:layout_weight="1"
                                 android:text="HIGH"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="10sp"
-                                android:backgroundTint="@color/bifrost_surface"
+                                android:backgroundTint="@color/aurora_surface"
                                 app:cornerRadius="10dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="@color/bifrost_accent"
+                                app:strokeColor="@color/aurora_accent"
                                 android:layout_marginStart="4dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -1048,14 +1048,14 @@
                         android:id="@+id/cpuPaletteRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/bifrost_spacing_md"
+                        android:layout_marginTop="@dimen/aurora_spacing_md"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CPU TEMP COLORS"
-                            android:textColor="@color/bifrost_text_secondary"
+                            android:textColor="@color/aurora_text_secondary"
                             android:textSize="10sp"
                             android:letterSpacing="0.1" />
 
@@ -1064,7 +1064,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Long press any swatch to reset its default"
-                            android:textColor="@color/bifrost_text_secondary"
+                            android:textColor="@color/aurora_text_secondary"
                             android:textSize="8sp" />
 
                         <LinearLayout
@@ -1079,12 +1079,12 @@
                                 android:layout_height="44dp"
                                 android:layout_weight="1"
                                 android:text="COOL"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="10sp"
-                                android:backgroundTint="@color/bifrost_surface"
+                                android:backgroundTint="@color/aurora_surface"
                                 app:cornerRadius="10dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="@color/bifrost_accent"
+                                app:strokeColor="@color/aurora_accent"
                                 android:layout_marginEnd="4dp" />
 
                             <com.google.android.material.button.MaterialButton
@@ -1093,12 +1093,12 @@
                                 android:layout_height="44dp"
                                 android:layout_weight="1"
                                 android:text="WARM"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="10sp"
-                                android:backgroundTint="@color/bifrost_surface"
+                                android:backgroundTint="@color/aurora_surface"
                                 app:cornerRadius="10dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="@color/bifrost_accent"
+                                app:strokeColor="@color/aurora_accent"
                                 android:layout_marginStart="2dp"
                                 android:layout_marginEnd="2dp" />
 
@@ -1108,12 +1108,12 @@
                                 android:layout_height="44dp"
                                 android:layout_weight="1"
                                 android:text="HOT"
-                                android:textColor="@color/bifrost_text"
+                                android:textColor="@color/aurora_text"
                                 android:textSize="10sp"
-                                android:backgroundTint="@color/bifrost_surface"
+                                android:backgroundTint="@color/aurora_surface"
                                 app:cornerRadius="10dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="@color/bifrost_accent"
+                                app:strokeColor="@color/aurora_accent"
                                 android:layout_marginStart="4dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -1125,25 +1125,25 @@
                 android:id="@+id/performanceCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/bifrost_spacing_md"
-                app:cardBackgroundColor="@color/bifrost_card"
+                android:layout_marginBottom="@dimen/aurora_spacing_md"
+                app:cardBackgroundColor="@color/aurora_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                android:outlineAmbientShadowColor="@color/bifrost_glow_cyan"
-                android:outlineSpotShadowColor="@color/bifrost_glow_cyan">
+                android:outlineAmbientShadowColor="@color/aurora_glow_teal"
+                android:outlineSpotShadowColor="@color/aurora_glow_teal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="@dimen/bifrost_card_padding"
+                    android:padding="@dimen/aurora_card_padding"
                     android:background="@drawable/card_glow_bg">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="UPDATE SPEED"
-                        android:textColor="@color/bifrost_text"
+                        android:textColor="@color/aurora_text"
                         android:textSize="12sp"
                         android:letterSpacing="0.08"
                         android:textStyle="bold"
@@ -1153,7 +1153,7 @@
                         android:id="@+id/profileSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bifrost_spinner_modern"
+                        android:background="@drawable/aurora_spinner_modern"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:paddingTop="12dp"

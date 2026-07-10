@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.moonbench.bifrost"
+    namespace = "com.moonbench.aurora"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.moonbench.bifrost"
+        applicationId = "com.moonbench.aurora"
         minSdk = 33
         targetSdk = 36
         versionCode = 6
