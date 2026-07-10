@@ -1,5 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.Aurora" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/aurora_accent</item>
+        <item name="colorOnPrimary">#FFFFFFFF</item>
+        <item name="colorSecondary">@color/aurora_accent_light</item>
+        <item name="colorOnSecondary">#FFFFFFFF</item>
+        <item name="colorSurface">@color/aurora_card</item>
+        <item name="colorOnSurface">@color/aurora_text</item>
+        <item name="colorSurfaceVariant">@color/aurora_surface</item>
+        <item name="colorOutline">@color/aurora_card_border</item>
+        <item name="android:colorBackground">@color/aurora_bg</item>
+        <item name="colorError">@color/aurora_status_off</item>
     </style>
 
     <style name="Theme.Aurora" parent="Base.Theme.Aurora" />

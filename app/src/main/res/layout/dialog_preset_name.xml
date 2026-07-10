@@ -66,7 +66,7 @@
             android:textAllCaps="false"
             android:textColor="@color/aurora_text"
             android:visibility="gone"
-            app:icon="@android:drawable/ic_menu_gallery"
+            app:icon="@drawable/ic_gallery"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
             app:iconTint="@color/aurora_text"

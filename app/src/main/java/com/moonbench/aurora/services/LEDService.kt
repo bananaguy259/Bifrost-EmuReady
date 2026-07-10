@@ -879,7 +879,7 @@ class LEDService : Service() {
             .setSmallIcon(R.drawable.ic_notification_small)
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_foreground))
             .setContentIntent(mainPendingIntent)
-            .addAction(android.R.drawable.ic_delete, "Stop", stopPendingIntent)
+            .addAction(R.drawable.ic_delete, "Stop", stopPendingIntent)
             .setOnlyAlertOnce(true)
             .setOngoing(currentPersistentNotification)
             .build()

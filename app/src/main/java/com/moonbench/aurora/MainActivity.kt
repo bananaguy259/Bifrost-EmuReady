@@ -562,6 +562,7 @@ class MainActivity : AppCompatActivity() {
             primaryToggleButton.text = "Start"
             primaryToggleButton.setBackgroundResource(R.drawable.button_primary_pill)
         }
+        primaryToggleButton.backgroundTintList = null
     }
 
     private fun setupHomeSurface() {
