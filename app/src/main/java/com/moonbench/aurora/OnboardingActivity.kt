@@ -1,6 +1,7 @@
 package com.moonbench.aurora
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.google.android.material.button.MaterialButton
 
 class OnboardingActivity : AppCompatActivity() {
@@ -60,6 +62,13 @@ class OnboardingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
+
+        window.statusBarColor = getColor(R.color.aurora_bg)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            WindowCompat.getInsetsController(window, window.decorView).apply {
+                isAppearanceLightStatusBars = false
+            }
+        }
 
         contentGroup = findViewById(R.id.onboardContentGroup)
         iconView = findViewById(R.id.onboardIcon)
