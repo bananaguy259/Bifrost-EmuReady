@@ -23,9 +23,6 @@
     <string name="ragnarok_warning_body">RAGNAROK sends LED commands as fast as possible and can overwhelm your device. Use only if you understand the risks.</string>
     <string name="ragnarok_warning_confirm">I understand</string>
 
-    <string name="beta_alert_title">AURORA BETA WARNING</string>
-    <string name="beta_alert_subtitle">This app is currently in beta and may cause crashes or unstable behavior.</string>
-    <string name="beta_alert_body">This app is provided for free and you should not be charged for obtaining it. It is available for free on this GitHub repo: exemplegithubrepo</string>
     <string name="alert_action_ok">OK</string>
 
     <string name="aurora_alert_title_placeholder">Title</string>

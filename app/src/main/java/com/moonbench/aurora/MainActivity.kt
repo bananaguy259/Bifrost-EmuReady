@@ -161,7 +161,6 @@ class MainActivity : AppCompatActivity() {
         // Do not change unless updating persistence logic across components.
 
         private const val TITLE_INTRO_ANIMATION_MS = 3200L
-        private const val PREF_FIRST_LAUNCH_ALERT_SHOWN = "first_launch_alert_shown"
         const val PREF_ONBOARDING_SHOWN = "onboarding_shown"
         private const val PREF_THOR_BOTTOM_SCREEN = "thor_bottom_screen"
         private const val PREF_THOR_AMBILIGHT_BOTTOM_SCREEN = "thor_ambilight_bottom_screen"
@@ -524,7 +523,6 @@ class MainActivity : AppCompatActivity() {
         setupPresetFeature()
         updateParameterVisibility()
         enableRainbowBackground(LEDService.isRunning)
-        showFirstLaunchAlertIfNeeded()
 
         serviceToggle.setOnCheckedChangeListener { _, isChecked ->
             if (serviceController.isServiceTransitioning) return@setOnCheckedChangeListener
@@ -3095,25 +3093,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun putOptionalColorExtra(intent: Intent, key: String, value: Int?) {
         intent.putExtra(key, value ?: COLOR_OVERRIDE_UNSET)
-    }
-
-    private fun showFirstLaunchAlertIfNeeded() {
-        val shown = prefs.getBoolean(PREF_FIRST_LAUNCH_ALERT_SHOWN, false)
-        if (!shown) {
-            val dialog = AuroraAlertDialog()
-            dialog.show(
-                activity = this,
-                title = getString(R.string.beta_alert_title),
-                subtitle = getString(R.string.beta_alert_subtitle),
-                body = getString(R.string.beta_alert_body),
-                positiveLabelResId = R.string.alert_action_ok,
-                negativeLabelResId = null,
-                cancelable = false,
-                onConfirm = {
-                    prefs.edit().putBoolean(PREF_FIRST_LAUNCH_ALERT_SHOWN, true).apply()
-                }
-            )
-        }
     }
 
     data class AssignedAppVisual(
