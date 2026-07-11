@@ -629,6 +629,8 @@ class PresetController(
         val customImageButton = view.findViewById<MaterialButton>(R.id.presetCustomImageButton)
         val cancelButton = view.findViewById<MaterialButton>(R.id.dialogCancelButton)
         val confirmButton = view.findViewById<MaterialButton>(R.id.dialogConfirmButton)
+        cancelButton.backgroundTintList = null
+        confirmButton.backgroundTintList = null
 
         titleView.text = title
         subtitleView.text = subtitle

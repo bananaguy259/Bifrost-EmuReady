@@ -50,6 +50,7 @@ class AuroraAlertDialog {
         }
 
         confirmButton.text = activity.getString(positiveLabelResId)
+        cancelButton.backgroundTintList = null
         confirmButton.setBackgroundResource(
             if (isDestructive) R.drawable.button_stop_pill else R.drawable.button_primary_pill
         )

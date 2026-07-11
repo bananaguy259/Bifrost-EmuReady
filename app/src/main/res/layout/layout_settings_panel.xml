@@ -17,13 +17,13 @@
             <Spinner
                 android:id="@+id/presetSpinner"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="56dp"
                 android:layout_weight="1"
                 android:background="@drawable/aurora_spinner_modern"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/savePresetButton"
