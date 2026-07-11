@@ -37,6 +37,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".OnboardingActivity"
+            android:launchMode="singleTop"
+            android:exported="false"
+            android:theme="@style/Theme.Aurora" />
+
         <service
             android:name=".services.LEDService"
             android:foregroundServiceType="mediaProjection"

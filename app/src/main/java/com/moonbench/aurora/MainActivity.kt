@@ -162,6 +162,7 @@ class MainActivity : AppCompatActivity() {
 
         private const val TITLE_INTRO_ANIMATION_MS = 3200L
         private const val PREF_FIRST_LAUNCH_ALERT_SHOWN = "first_launch_alert_shown"
+        const val PREF_ONBOARDING_SHOWN = "onboarding_shown"
         private const val PREF_THOR_BOTTOM_SCREEN = "thor_bottom_screen"
         private const val PREF_THOR_AMBILIGHT_BOTTOM_SCREEN = "thor_ambilight_bottom_screen"
         private const val PREF_BATTERY_OVERRIDE_WHEN_PLUGGED = "battery_override_when_plugged"
@@ -357,6 +358,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val onboardingPrefs = getSharedPreferences("aurora_prefs", MODE_PRIVATE)
+        if (!onboardingPrefs.getBoolean(PREF_ONBOARDING_SHOWN, false)) {
+            startActivity(Intent(this, OnboardingActivity::class.java))
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_main)
 
         setupStatusBar()
