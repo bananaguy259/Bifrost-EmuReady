@@ -10,6 +10,14 @@
         <item name="colorOutline">@color/aurora_card_border</item>
         <item name="android:colorBackground">@color/aurora_bg</item>
         <item name="colorError">@color/aurora_status_off</item>
+        <item name="alertDialogTheme">@style/Aurora.AlertDialogTheme</item>
+    </style>
+
+    <style name="Aurora.AlertDialogTheme" parent="ThemeOverlay.Material3.Dialog.Alert">
+        <item name="colorPrimary">@color/aurora_accent</item>
+        <item name="colorAccent">@color/aurora_accent</item>
+        <item name="android:textColorPrimary">@color/aurora_text</item>
+        <item name="android:background">@color/aurora_card</item>
     </style>
 
     <style name="Theme.Aurora" parent="Base.Theme.Aurora" />

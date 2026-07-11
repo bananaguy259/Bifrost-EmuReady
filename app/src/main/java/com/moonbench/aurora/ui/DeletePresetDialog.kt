@@ -25,6 +25,7 @@ class DeletePresetDialog(
             positiveLabelResId = R.string.action_delete,
             negativeLabelResId = R.string.action_cancel,
             cancelable = true,
+            isDestructive = true,
             onConfirm = onConfirm,
             onCancel = onCancel
         )

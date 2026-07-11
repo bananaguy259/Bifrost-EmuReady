@@ -627,10 +627,13 @@ class PresetController(
         val nameInputLayout = view.findViewById<TextInputLayout>(R.id.presetNameInputLayout)
         val nameInput = view.findViewById<TextInputEditText>(R.id.presetNameInput)
         val customImageButton = view.findViewById<MaterialButton>(R.id.presetCustomImageButton)
+        val cancelButton = view.findViewById<MaterialButton>(R.id.dialogCancelButton)
+        val confirmButton = view.findViewById<MaterialButton>(R.id.dialogConfirmButton)
 
         titleView.text = title
         subtitleView.text = subtitle
         nameInput.setText(initialName)
+        confirmButton.text = positiveButtonLabel
 
         nameInputLayout.visibility = if (showNameInput) View.VISIBLE else View.GONE
         if (showNameInput) {
@@ -641,18 +644,22 @@ class PresetController(
 
         val dialog = androidx.appcompat.app.AlertDialog.Builder(activity)
             .setView(view)
-            .setPositiveButton(positiveButtonLabel) { _, _ ->
-                val resolvedName = if (showNameInput) {
-                    nameInput.text?.toString()?.trim().orEmpty()
-                } else {
-                    initialName
-                }
-                onConfirm(resolvedName)
-            }
-            .setNegativeButton("Cancel", null)
             .create()
 
         dialog.window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(Color.TRANSPARENT))
+
+        confirmButton.setOnClickListener {
+            val resolvedName = if (showNameInput) {
+                nameInput.text?.toString()?.trim().orEmpty()
+            } else {
+                initialName
+            }
+            dialog.dismiss()
+            onConfirm(resolvedName)
+        }
+        cancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
 
         if (showCustomImageOption && onConfirmWithCustomImage != null) {
             customImageButton.setOnClickListener {
@@ -710,6 +717,7 @@ class PresetController(
             positiveLabelResId = R.string.action_delete_all,
             negativeLabelResId = R.string.action_cancel,
             cancelable = true,
+            isDestructive = true,
             onConfirm = {
                 deleteAllPresets()
             },

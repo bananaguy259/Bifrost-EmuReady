@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
 import com.moonbench.aurora.R
 
 class AuroraAlertDialog {
@@ -19,6 +20,7 @@ class AuroraAlertDialog {
         positiveLabelResId: Int,
         negativeLabelResId: Int?,
         cancelable: Boolean,
+        isDestructive: Boolean = false,
         onConfirm: () -> Unit,
         onCancel: () -> Unit = {}
     ) {
@@ -28,6 +30,8 @@ class AuroraAlertDialog {
         val titleView = view.findViewById<TextView>(R.id.dialogTitle)
         val subtitleView = view.findViewById<TextView>(R.id.dialogSubtitle)
         val bodyView = view.findViewById<TextView>(R.id.dialogBody)
+        val cancelButton = view.findViewById<MaterialButton>(R.id.dialogCancelButton)
+        val confirmButton = view.findViewById<MaterialButton>(R.id.dialogConfirmButton)
 
         titleView.text = title
 
@@ -45,18 +49,36 @@ class AuroraAlertDialog {
             bodyView.text = body
         }
 
-        val builder = AlertDialog.Builder(activity)
-            .setView(view)
-            .setPositiveButton(positiveLabelResId) { _, _ -> onConfirm() }
-            .setCancelable(cancelable)
+        confirmButton.text = activity.getString(positiveLabelResId)
+        confirmButton.setBackgroundResource(
+            if (isDestructive) R.drawable.button_stop_pill else R.drawable.button_primary_pill
+        )
+        confirmButton.backgroundTintList = null
 
         if (negativeLabelResId != null) {
-            builder.setNegativeButton(negativeLabelResId) { _, _ -> onCancel() }
+            cancelButton.visibility = View.VISIBLE
+            cancelButton.text = activity.getString(negativeLabelResId)
+        } else {
+            cancelButton.visibility = View.GONE
         }
 
-        val dialog = builder.create()
+        val dialog = AlertDialog.Builder(activity)
+            .setView(view)
+            .setCancelable(cancelable)
+            .create()
+
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCanceledOnTouchOutside(cancelable)
+
+        confirmButton.setOnClickListener {
+            dialog.dismiss()
+            onConfirm()
+        }
+        cancelButton.setOnClickListener {
+            dialog.dismiss()
+            onCancel()
+        }
+
         dialog.show()
     }
 }
