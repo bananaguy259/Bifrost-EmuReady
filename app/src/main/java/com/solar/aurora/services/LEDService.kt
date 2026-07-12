@@ -121,6 +121,19 @@ class LEDService : Service() {
     private var currentPersistentNotification: Boolean = true
     private var currentAutoBrightness: Boolean = false
     private var screenBrightnessObserver: ContentObserver? = null
+    private var lastPolledBrightness: Int = -1
+    private val brightnessPollIntervalMs = 100L
+    private val brightnessPollRunnable = object : Runnable {
+        override fun run() {
+            if (!currentAutoBrightness) return
+            val effective = effectiveBrightness()
+            if (effective != lastPolledBrightness) {
+                lastPolledBrightness = effective
+                currentAnimation?.setTargetBrightness(effective)
+            }
+            handler.postDelayed(this, brightnessPollIntervalMs)
+        }
+    }
     private var allowBackgroundRun: Boolean = false
     private var currentAmbilightDisplayId: Int = Display.DEFAULT_DISPLAY
     private var activeAnimationType: LedAnimationType? = null
@@ -815,7 +828,24 @@ class LEDService : Service() {
         pendingShutdownRunnable = null
     }
 
+    private fun getLiveDisplayBrightness(): Int? {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return null
+        return try {
+            val displayManager = getSystemService(Context.DISPLAY_SERVICE) as? DisplayManager
+            val display = displayManager?.getDisplay(Display.DEFAULT_DISPLAY)
+            val brightness = display?.brightnessInfo?.brightness
+            if (brightness != null && !brightness.isNaN() && brightness in 0f..1f) {
+                (brightness * 255f).toInt().coerceIn(0, 255)
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
     private fun getSystemScreenBrightness(): Int {
+        getLiveDisplayBrightness()?.let { return it }
         val floatBrightness = try {
             Settings.System.getFloat(contentResolver, "screen_brightness_float")
         } catch (e: Settings.SettingNotFoundException) {
@@ -870,8 +900,12 @@ class LEDService : Service() {
         currentAutoBrightness = enabled
         if (enabled) {
             registerScreenBrightnessObserver()
+            lastPolledBrightness = -1
+            handler.removeCallbacks(brightnessPollRunnable)
+            handler.post(brightnessPollRunnable)
         } else {
             unregisterScreenBrightnessObserver()
+            handler.removeCallbacks(brightnessPollRunnable)
         }
         currentAnimation?.setTargetBrightness(effectiveBrightness())
     }
@@ -886,6 +920,7 @@ class LEDService : Service() {
             isRunning = false
             com.solar.aurora.widget.AuroraWidgetProvider.updateAllWidgets(this)
             unregisterScreenBrightnessObserver()
+            handler.removeCallbacks(brightnessPollRunnable)
             allowBackgroundRun = false
             isTransitioning.set(false)
             activeAnimationType = null
