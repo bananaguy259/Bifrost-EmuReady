@@ -816,6 +816,14 @@ class LEDService : Service() {
     }
 
     private fun getSystemScreenBrightness(): Int {
+        val floatBrightness = try {
+            Settings.System.getFloat(contentResolver, "screen_brightness_float")
+        } catch (e: Settings.SettingNotFoundException) {
+            Float.NaN
+        }
+        if (!floatBrightness.isNaN() && floatBrightness in 0f..1f) {
+            return (floatBrightness * 255f).toInt().coerceIn(0, 255)
+        }
         return try {
             Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
         } catch (e: Settings.SettingNotFoundException) {
@@ -842,6 +850,13 @@ class LEDService : Service() {
             false,
             observer
         )
+        runCatching {
+            contentResolver.registerContentObserver(
+                Settings.System.getUriFor("screen_brightness_float"),
+                false,
+                observer
+            )
+        }
     }
 
     private fun unregisterScreenBrightnessObserver() {
