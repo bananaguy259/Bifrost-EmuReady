@@ -59,6 +59,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/presetCustomImageButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -66,6 +67,7 @@
             android:textAllCaps="false"
             android:textColor="@color/aurora_text"
             android:visibility="gone"
+            app:backgroundTint="@null"
             app:icon="@drawable/ic_gallery"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
