@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.moonbench.aurora"
+    namespace = "com.solar.aurora"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.moonbench.aurora"
+        applicationId = "com.solar.aurora"
         minSdk = 33
         targetSdk = 36
         versionCode = 6

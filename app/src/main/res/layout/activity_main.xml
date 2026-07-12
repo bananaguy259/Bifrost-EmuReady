@@ -164,7 +164,7 @@
                 app:strokeColor="@color/aurora_accent" />
         </LinearLayout>
 
-        <com.moonbench.aurora.ui.LockableHorizontalScrollView
+        <com.solar.aurora.ui.LockableHorizontalScrollView
             android:id="@+id/presetCoverFlowScroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -181,7 +181,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" />
-        </com.moonbench.aurora.ui.LockableHorizontalScrollView>
+        </com.solar.aurora.ui.LockableHorizontalScrollView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/activePresetInfoCard"
