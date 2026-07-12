@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var autoStartupSwitch: SwitchMaterial
     private lateinit var pluggedBatteryOverrideSwitch: SwitchMaterial
     private lateinit var persistentNotificationSwitch: SwitchMaterial
+    private lateinit var autoBrightnessSwitch: SwitchMaterial
     private lateinit var mediaProjectionManager: MediaProjectionManager
     private lateinit var animationSpinner: Spinner
     private lateinit var profileSpinner: Spinner
@@ -166,6 +167,7 @@ class MainActivity : AppCompatActivity() {
         private const val PREF_THOR_AMBILIGHT_BOTTOM_SCREEN = "thor_ambilight_bottom_screen"
         private const val PREF_BATTERY_OVERRIDE_WHEN_PLUGGED = "battery_override_when_plugged"
         private const val PREF_PERSISTENT_NOTIFICATION = "persistent_notification_enabled"
+        private const val PREF_AUTO_BRIGHTNESS = "auto_brightness_enabled"
         private const val EXTRA_DISPLAY_RELAUNCH_ATTEMPT = "display_relaunch_attempt"
         private const val MAX_DISPLAY_RELAUNCH_ATTEMPTS = 3
         private const val COLOR_OVERRIDE_UNSET = Int.MIN_VALUE
@@ -208,6 +210,7 @@ class MainActivity : AppCompatActivity() {
     private var selectedFlashWhenReady: Boolean = false
     private var selectedBatteryOverrideWhenPlugged: Boolean = false
     private var selectedPersistentNotification: Boolean = true
+    private var selectedAutoBrightness: Boolean = false
     private var isAwaitingPermissionResult = false
     private var isUpdatingFromPreset = false
     private var isGrantingProjectionForAppProfile = false
@@ -442,6 +445,7 @@ class MainActivity : AppCompatActivity() {
         autoStartupSwitch = findViewById(R.id.autoStartupSwitch)
         pluggedBatteryOverrideSwitch = findViewById(R.id.pluggedBatteryOverrideSwitch)
         persistentNotificationSwitch = findViewById(R.id.persistentNotificationSwitch)
+        autoBrightnessSwitch = findViewById(R.id.autoBrightnessSwitch)
         animationSpinner = findViewById(R.id.animationSpinner)
         profileSpinner = findViewById(R.id.profileSpinner)
         presetSpinner = findViewById(R.id.presetSpinner)
@@ -519,6 +523,7 @@ class MainActivity : AppCompatActivity() {
         setupAutoStartupSwitch()
         setupPluggedBatteryOverrideSwitch()
         setupPersistentNotificationSwitch()
+        setupAutoBrightnessSwitch()
         setupThorScreenPreference()
         setupPresetFeature()
         updateParameterVisibility()
@@ -2287,6 +2292,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupAutoBrightnessSwitch() {
+        selectedAutoBrightness = prefs.getBoolean(PREF_AUTO_BRIGHTNESS, false)
+        autoBrightnessSwitch.isChecked = selectedAutoBrightness
+
+        autoBrightnessSwitch.setOnCheckedChangeListener { _, isChecked ->
+            selectedAutoBrightness = isChecked
+            prefs.edit().putBoolean(PREF_AUTO_BRIGHTNESS, isChecked).apply()
+
+            if (LEDService.isRunning && !serviceController.isServiceTransitioning) {
+                sendLiveUpdateToLedService()
+            }
+        }
+    }
+
     private fun setupThorScreenPreference() {
         val thorCard = findViewById<View>(R.id.thorSettingsCard) ?: return
         if (!DeviceInfo.isAynThor) {
@@ -3036,6 +3055,10 @@ class MainActivity : AppCompatActivity() {
                 LEDService.EXTRA_PERSISTENT_NOTIFICATION,
                 selectedPersistentNotification
             )
+            putExtra(
+                LEDService.EXTRA_AUTO_BRIGHTNESS,
+                selectedAutoBrightness
+            )
             putExtra("ambilightDisplayId", getAmbilightTargetDisplayId())
             putExtra(
                 LEDService.EXTRA_ALLOW_BACKGROUND_RUN,
@@ -3086,6 +3109,10 @@ class MainActivity : AppCompatActivity() {
             putExtra(
                 LEDService.EXTRA_PERSISTENT_NOTIFICATION,
                 selectedPersistentNotification
+            )
+            putExtra(
+                LEDService.EXTRA_AUTO_BRIGHTNESS,
+                selectedAutoBrightness
             )
         }
         startService(intent)

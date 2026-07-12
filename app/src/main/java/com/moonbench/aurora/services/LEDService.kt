@@ -14,6 +14,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.content.pm.ServiceInfo
+import android.database.ContentObserver
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.projection.MediaProjection
@@ -24,6 +25,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.hardware.display.DisplayManager
+import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Display
@@ -73,6 +75,7 @@ class LEDService : Service() {
         const val EXTRA_ALLOW_BACKGROUND_RUN = "allowBackgroundRun"
         const val EXTRA_BATTERY_OVERRIDE_WHEN_PLUGGED = "batteryOverrideWhenPlugged"
         const val EXTRA_PERSISTENT_NOTIFICATION = "persistentNotification"
+        const val EXTRA_AUTO_BRIGHTNESS = "autoBrightness"
         private const val EXTRA_BATTERY_LOW_COLOR_OVERRIDE = "batteryLowColorOverride"
         private const val EXTRA_BATTERY_MID_COLOR_OVERRIDE = "batteryMidColorOverride"
         private const val EXTRA_BATTERY_HIGH_COLOR_OVERRIDE = "batteryHighColorOverride"
@@ -116,6 +119,8 @@ class LEDService : Service() {
     private var currentCpuHotColorOverride: Int? = null
     private var currentBatteryOverrideWhenPlugged: Boolean = false
     private var currentPersistentNotification: Boolean = true
+    private var currentAutoBrightness: Boolean = false
+    private var screenBrightnessObserver: ContentObserver? = null
     private var allowBackgroundRun: Boolean = false
     private var currentAmbilightDisplayId: Int = Display.DEFAULT_DISPLAY
     private var activeAnimationType: LedAnimationType? = null
@@ -212,6 +217,10 @@ class LEDService : Service() {
         currentPersistentNotification = intent.getBooleanExtra(
             EXTRA_PERSISTENT_NOTIFICATION,
             currentPersistentNotification
+        )
+
+        applyAutoBrightnessState(
+            intent.getBooleanExtra(EXTRA_AUTO_BRIGHTNESS, currentAutoBrightness)
         )
 
         val notification = createNotification()
@@ -323,7 +332,7 @@ class LEDService : Service() {
         if (intent.hasExtra("brightness")) {
             val newBrightness = intent.getIntExtra("brightness", currentBrightness).coerceIn(0, 255)
             currentBrightness = newBrightness
-            animation?.setTargetBrightness(currentBrightness)
+            animation?.setTargetBrightness(effectiveBrightness())
         }
 
         if (intent.hasExtra("speed")) {
@@ -469,6 +478,16 @@ class LEDService : Service() {
             if (newPersistentNotification != currentPersistentNotification) {
                 currentPersistentNotification = newPersistentNotification
                 updateForegroundNotification()
+            }
+
+            if (intent.hasExtra(EXTRA_AUTO_BRIGHTNESS)) {
+                val newAutoBrightness = intent.getBooleanExtra(
+                    EXTRA_AUTO_BRIGHTNESS,
+                    currentAutoBrightness
+                )
+                if (newAutoBrightness != currentAutoBrightness) {
+                    applyAutoBrightnessState(newAutoBrightness)
+                }
             }
         }
     }
@@ -796,6 +815,52 @@ class LEDService : Service() {
         pendingShutdownRunnable = null
     }
 
+    private fun getSystemScreenBrightness(): Int {
+        return try {
+            Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
+        } catch (e: Settings.SettingNotFoundException) {
+            255
+        }
+    }
+
+    private fun effectiveBrightness(): Int {
+        if (!currentAutoBrightness) return currentBrightness
+        val screenBrightness = getSystemScreenBrightness().coerceIn(0, 255)
+        return ((currentBrightness * screenBrightness) / 255).coerceIn(0, 255)
+    }
+
+    private fun registerScreenBrightnessObserver() {
+        if (screenBrightnessObserver != null) return
+        val observer = object : ContentObserver(handler) {
+            override fun onChange(selfChange: Boolean) {
+                currentAnimation?.setTargetBrightness(effectiveBrightness())
+            }
+        }
+        screenBrightnessObserver = observer
+        contentResolver.registerContentObserver(
+            Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS),
+            false,
+            observer
+        )
+    }
+
+    private fun unregisterScreenBrightnessObserver() {
+        screenBrightnessObserver?.let {
+            runCatching { contentResolver.unregisterContentObserver(it) }
+        }
+        screenBrightnessObserver = null
+    }
+
+    private fun applyAutoBrightnessState(enabled: Boolean) {
+        currentAutoBrightness = enabled
+        if (enabled) {
+            registerScreenBrightnessObserver()
+        } else {
+            unregisterScreenBrightnessObserver()
+        }
+        currentAnimation?.setTargetBrightness(effectiveBrightness())
+    }
+
     private fun cleanupAndStop() {
         if (isStopping.getAndSet(true)) return
         Log.d(TAG, "cleanupAndStop: STOPPING SERVICE")
@@ -805,6 +870,7 @@ class LEDService : Service() {
             clearPendingCallbacks()
             isRunning = false
             com.moonbench.aurora.widget.AuroraWidgetProvider.updateAllWidgets(this)
+            unregisterScreenBrightnessObserver()
             allowBackgroundRun = false
             isTransitioning.set(false)
             activeAnimationType = null
@@ -938,7 +1004,7 @@ class LEDService : Service() {
                 return
             }
 
-            animation.setTargetBrightness(brightness)
+            animation.setTargetBrightness(effectiveBrightness())
             animation.setSpeed(speed)
             animation.setLerpStrength(smoothness)
             animation.setSensitivity(sensitivity)

@@ -22,7 +22,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     private val pages = listOf(
         OnboardPage(
-            iconRes = R.drawable.ic_onboard_flame,
+            iconRes = R.drawable.ic_onboard_flame_logo,
             title = "Welcome to Aurora",
             description = "Turn your handheld's joystick LEDs into part of the experience — synced to your screen, your audio, or however you like it."
         ),
