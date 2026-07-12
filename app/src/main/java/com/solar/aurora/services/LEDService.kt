@@ -828,24 +828,7 @@ class LEDService : Service() {
         pendingShutdownRunnable = null
     }
 
-    private fun getLiveDisplayBrightness(): Int? {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return null
-        return try {
-            val displayManager = getSystemService(Context.DISPLAY_SERVICE) as? DisplayManager
-            val display = displayManager?.getDisplay(Display.DEFAULT_DISPLAY)
-            val brightness = display?.brightnessInfo?.brightness
-            if (brightness != null && !brightness.isNaN() && brightness in 0f..1f) {
-                (brightness * 255f).toInt().coerceIn(0, 255)
-            } else {
-                null
-            }
-        } catch (e: Exception) {
-            null
-        }
-    }
-
     private fun getSystemScreenBrightness(): Int {
-        getLiveDisplayBrightness()?.let { return it }
         val floatBrightness = try {
             Settings.System.getFloat(contentResolver, "screen_brightness_float")
         } catch (e: Settings.SettingNotFoundException) {
