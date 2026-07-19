@@ -1,18 +1,32 @@
-# Bifrost -- LED Controller for the AYN Thor
+# Aurora — LED Controller for AYN Handhelds
 
-Bifrost is a custom LED controller for the **AYN Thor** handheld (and might work for other handhelds).  
-It provides a collection of LED animations that can run in the background, including:
+Aurora is a custom LED controller for AYN handhelds (built and tested primarily on the **AYN Odin 2** family), providing a collection of background LED animations including:
 
-- **Ambilight**
-- **Audio Reactive**
-- **Ambi Aurora** (a mix of Ambilight + Audio Reactive)
-- **Classic animations:** Breath, Rainbow, Pulse, and more
+- **Ambilight** — syncs your joystick LEDs to your screen's colors in real time
+- **Audio Reactive** — LEDs pulse and move with your game's audio
+- **Ambilight + Audio** — a hybrid of both
+- **Classic animations** — Breathing, Rainbow, Pulse, Strobe, Sparkle, Fade, Party Mode, Chase, Static Color
+- **Battery Indicator** — LEDs reflect your current battery level
+- **Auto Brightness** — LED brightness automatically follows your screen's brightness
 
-Bifrost aims to bring a vibrant, customizable lighting experience to the  
-AYN Thor while keeping performance and battery consumption in mind.
+Aurora aims to bring a vibrant, customizable lighting experience to your handheld while keeping performance and battery consumption in mind.
 
-> ⚠️ **Important:** For animations to work, **Bifrost must stay alive in the background**.  
-> Closing the app or restricting notification (and screen recording for Ambilight) activity will stop LED updates.
+> ⚠️ **Important:** For animations to work, **Aurora must stay alive in the background**. Closing the app or restricting notification (and screen recording for Ambilight) activity will stop LED updates.
+
+---
+
+# 🧬 Fork Notice
+
+**Aurora is a fork of [Bifrost](https://github.com/Pollux-MoonBench/Bifrost)**, originally created by **Pollux-MoonBench** with major contributions from **KuriGohan-Kamehameha**. All core LED animation logic, the Odin/Thor hardware control layer, preset system, and app-profile switching originate from that project.
+
+This fork focuses on:
+- A redesigned UI and app identity (new color scheme, icons, onboarding flow, and branding)
+- Simplified, renamed settings intended to be clearer for non-technical users
+- A home screen widget for one-tap Start/Stop
+- Auto Brightness (LED brightness synced to screen brightness)
+- Removal of a few niche features (CPU temperature animation, built-in emoji icon presets) in favor of a more focused feature set
+
+Per the terms of the GPLv3 license this project is distributed under, this notice documents that Aurora is a modified version of Bifrost. See [License](#-license) below.
 
 ---
 
@@ -20,133 +34,85 @@ AYN Thor while keeping performance and battery consumption in mind.
 
 ## Ambilight
 
-Uses Android's screen recording API to sample the screen's left and right average colors.  
-For performance, Bifrost captures the screen in **2×1 pixels** and reads the RGB values directly from the buffer.
+Uses Android's screen recording API to sample the screen's left and right average colors. For performance, Aurora captures the screen in **2×1 pixels** and reads the RGB values directly from the buffer.
 
 ### Options
 
-- **Custom color sampler** to eliminate pillarboxing/letterboxing and favor more vivid colors (useful for older content)
+- **Ignore black bars** to eliminate pillarboxing/letterboxing and favor more vivid colors (useful for older content)
 - **Single color mode** to calculate one shared color for both sticks
 - **Saturation boost slider** for more intense colors
 - **Hex color input** for precise color selection
 
-When choosing the custom color sampler, Bifrost captures the screen using a **low-resolution 32-pixel grid**, allowing more advanced color analysis while remaining lightweight:
-
-- **Favors saturated colors** to improve vibrancy
-- Helps eliminate pillarboxing and letterboxing
+When enabled, the black-bar-aware sampler captures the screen using a **low-resolution 32-pixel grid**, allowing more advanced color analysis while remaining lightweight, favoring saturated colors and helping eliminate letterboxing.
 
 ---
 
 ## Audio Reactive
 
-Analyzes live audio levels (using the screen recording permission) to drive LED intensity.
-
-### Improvements
-
-- Redesigned **reactivity system** using a single unified reactivity slider
-- Improved responsiveness and smoother audio-driven animations
+Analyzes live audio levels (using the screen recording permission) to drive LED intensity, using a single unified reactivity slider for responsive, smooth audio-driven animations.
 
 ---
 
-## Ambi Aurora
+## Ambilight + Audio
 
-Combines Ambilight color sampling with Audio Reactive intensity for a hybrid effect.
+Combines Ambilight color sampling with Audio Reactive intensity for a hybrid effect. Supports the same black-bar ignoring, single color mode, and saturation boost options as Ambilight.
 
-### Enhancements
+---
 
-- Improved color calculation
-- Supports **custom sampling**, **single color mode**, and **saturation boost**
+## Auto Brightness
+
+When enabled, your LED brightness automatically scales to match your device's current screen brightness — dim your screen, and your joystick LEDs dim proportionally along with it.
 
 ---
 
 ## Animation Presets
 
-- Save multiple animation presets with their own settings
+- Save unlimited animation presets, each with their own full settings
+- Rename or update any saved preset (including the default one) at any time
 - Automatically loads the **last selected preset** on app launch
-- Easy organization and quick switching
+- Export/import presets as a versioned JSON bundle, with support for replacing or appending to your existing presets
+- Assign a built-in icon or upload a custom image per preset
 
 ---
 
-## Performance Profiles
+## App Profiles
 
-Bifrost offers multiple performance-level modes.
-
-The **Ragnarok profile** updates the Thor LED controller **as fast as possible**, which may cause latency or even crashes.
+- Assign specific presets to specific apps
+- Aurora automatically switches presets depending on the **foreground application**
+- Optional **fallback preset** for when no mapped app is in the foreground
 
 ---
 
-# 🚀 New Features
+## Performance / Update Speed
 
-Recent updates introduce several new capabilities.
+Aurora offers multiple update-speed profiles, from **Battery Saver** up to **Fastest**, which updates the LED controller as quickly as possible — this fastest mode may cause latency or instability on some devices.
 
-## Auto Start
-
-- **Auto-start on boot** so Bifrost resumes automatically after device reboot.
-- If auto-start is skipped because MediaProjection permission is required, Bifrost shows a notification to reopen the app and request the permission.
-
-## App-based Profiles
-
-- Profiles can be **assigned to specific apps**
-- Bifrost automatically switches profiles depending on the **foreground application**
-- Optional **fallback preset** when no mapped app is in the foreground
-- First-use popup to explain app mode behavior
-- Immediate app-profile resolution when app mode is enabled
+---
 
 ## Independent LED Control
 
-- **Separate left/right LED control**
-- Each stick can run **different colors or animations**
+- Separate left/right LED control
+- Each stick can run different colors or animations
 
 ## Charging Indicator
 
-Improved LED feedback while charging:
+Improved LED feedback while charging: breathing lights while charging, charging speed indication, and a flash notification when charging completes.
 
-- Breathing lights while charging
-- Charging speed indication
-- Flash notification when charging completes
+---
 
-## CPU Temperature Animation
+## Home Screen Widget
 
-A new animation that changes LED colors based on **CPU temperature readings**.
-
-## Preset Export / Import
-
-- Export presets as a **versioned JSON bundle**
-- Import presets in **Replace** or **Add** mode
-- Preset metadata, artwork references, and app-profile flags are preserved
-
-## Preset Artwork and Management
-
-- Preset artwork editor supports:
-  - Built-in icons
-  - Custom emoji
-  - Uploaded custom images
-  - Assigned app icons
-- Rename presets directly from the update flow
-- Long-press delete to remove **all presets** with confirmation
-- Horizontal preset presentation with smoother cover-flow and snap behavior
-
-## Animation Color Customization
-
-- Per-preset custom colors for **Battery Indicator**: low / mid / high
-- Per-preset custom colors for **CPU Temperature**: cool / warm / hot
-- Long-press color swatches to reset to defaults
-
-## Service and UX Controls
-
-- Toggle for persistent foreground notification
-- Improved switch visuals and general UX polish
-- Better app-mode fallback handling: if app mode is on and no fallback preset is selected, Bifrost keeps the service active but does not apply an animation until a mapped/fallback preset can be resolved
+A 1×2 home screen widget for instantly starting or stopping Aurora without opening the app, reflecting Aurora's live running state.
 
 ---
 
 # 📦 Installation
 
-Bifrost can be installed in two different ways:
+This project builds via GitHub Actions — push to `main` and check the **Actions** tab for a downloadable debug APK artifact.
 
-## Method 1 — Manual APK install
+### Manual APK install (from a built artifact)
 
-1. Download the latest **APK** from the GitHub releases page.
+1. Download the built **APK**.
 2. Open your **Downloads** folder.
 3. Tap the APK file to start the installation.
 4. If Android asks to allow installation from **unknown sources**, accept the permission.
@@ -154,23 +120,9 @@ Bifrost can be installed in two different ways:
 
 ---
 
-## Method 2 — Install & update via Obtainium (recommended)
-
-If you use **Obtainium**, you can automatically receive updates:
-
-1. Open the Obtainium app  
-   https://github.com/ImranR98/Obtainium
-
-2. Add a new app using this source:
-   https://github.com/Pollux-MoonBench/Bifrost/releases/
-
-3. Follow the Obtainium installation process.
-
----
-
 # 🔒 Required Permissions
 
-To enable Ambilight, Audio Reactive, and Ambi Aurora modes, Bifrost requires:
+To enable Ambilight, Audio Reactive, and Ambilight + Audio modes, Aurora requires:
 
 ### Screen recording permission
 
@@ -179,63 +131,26 @@ Used exclusively to sample:
 - Screen colors (Ambilight)
 - Audio intensity (Audio Reactive)
 
-Bifrost does **not save or transmit screen contents** — sampling happens locally and is reduced to minimal pixel data for efficiency.
+Aurora does **not save or transmit screen contents** — sampling happens locally and is reduced to minimal pixel data for efficiency.
 
 ---
 
-# 🎮 Other Tested Devices
+# ⚠️ Status
 
-Bifrost has been tested and confirmed to work on the following devices:
-
-### AYN
-- Thor
-- Odin 2 Portal Pro
-
-### Retroid
-- Pocket Mini V2
-- Pocket 5
+Aurora inherits Bifrost's underlying LED control and animation logic, which is stable but still evolving. Unexpected behavior may still occur on some devices, and this fork has been primarily tested on AYN Odin 2 hardware.
 
 ---
 
-# ⚠️ In Dev Status
+# ❤️ Credits
 
-Bifrost is now **out of beta**, but still actively evolving.  
-While overall stability has improved, unexpected behavior may still occur on some devices.
-
-### Known issues
-
-- Random crashes under certain conditions
-- Granting notification permission at launch may cause the LED toggle switch to appear disabled even though animations continue running
-- On the Retroid Pocket Mini, only the left stick turns on in Ambilight mode.  
-  This issue can be solved using the **custom color sampler mode**.
-
-Thanks to **r/hupo224** for helping investigate this issue.
-
----
-
-# ❤️ Contributors
-
-Huge thanks to **KuriGohan-Kamehameha** for the **massive work and new features added to the project**, including major functionality improvements and system integrations.
-
-Project:  
-https://github.com/KuriGohan-Kamehameha
-
----
-
-# ☕ Support the Project
-
-If you enjoy Bifrost and want to support development, you can **buy me a coffee** here:
+Aurora would not exist without the original work by **Pollux-MoonBench** and **KuriGohan-Kamehameha** on [Bifrost](https://github.com/Pollux-MoonBench/Bifrost). If you'd like to support the original project this fork is built on:
 
 👉 https://ko-fi.com/pollux_moonbench
-
-Thank you! ❤️
 
 ---
 
 # 📜 License
 
-This project is licensed under **GPLv3**.
+This project is licensed under **GPLv3**, inherited from the original Bifrost project. You are free to use, study, modify, and redistribute this app under the terms of the GPLv3 license — see [LICENSE](LICENSE) for the full text.
 
-You are free to use, study, modify, and redistribute the app under the terms of the GPLv3 license.
-
-This app is provided for free in this repository and **cannot be sold to you.**
+This app is provided for free and **cannot be sold to you.**
