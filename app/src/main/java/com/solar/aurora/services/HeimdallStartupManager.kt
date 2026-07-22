@@ -15,6 +15,7 @@ object HeimdallStartupManager {
     private const val PREF_KEY_LAST_PRESET = "last_preset_name"
     private const val PREF_KEY_BATTERY_OVERRIDE_WHEN_PLUGGED = "battery_override_when_plugged"
     private const val PREF_KEY_PERSISTENT_NOTIFICATION = "persistent_notification_enabled"
+    private const val PREF_KEY_AUTO_BRIGHTNESS = "auto_brightness_enabled"
 
     fun isAutoStartEnabled(prefs: SharedPreferences): Boolean {
         return prefs.getBoolean(PREF_KEY_AUTO_START_HEIMDALL, false)
@@ -75,6 +76,10 @@ object HeimdallStartupManager {
             putExtra(
                 LEDService.EXTRA_PERSISTENT_NOTIFICATION,
                 prefs.getBoolean(PREF_KEY_PERSISTENT_NOTIFICATION, true)
+            )
+            putExtra(
+                LEDService.EXTRA_AUTO_BRIGHTNESS,
+                prefs.getBoolean(PREF_KEY_AUTO_BRIGHTNESS, false)
             )
             putExtra(LEDService.EXTRA_ALLOW_BACKGROUND_RUN, true)
         }
